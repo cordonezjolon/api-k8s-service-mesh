@@ -12,6 +12,10 @@ spec:
     metadata:
       labels:
         app: api-demo
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000"
     spec:
       serviceAccountName: api-user
       containers:
