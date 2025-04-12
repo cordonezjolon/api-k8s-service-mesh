@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: api-user
+  namespace: demo-api
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: demo-api
+  name: api-reader
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: demo-api
+subjects:
+  - kind: ServiceAccount
+    name: api-user
+    namespace: demo-api
+roleRef:
+  kind: Role
+  name: api-reader
+  apiGroup: rbac.authorization.k8s.io
