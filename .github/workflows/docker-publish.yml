@@ -58,5 +58,5 @@ jobs:
                   kubectl apply -f k8s/deployment.yaml
                   kubectl apply -f k8s/service.yaml
               - name: Force rollout restart
-                run: kubectl rollout restart deployment/api-demo -n api-demo
+                run: kubectl rollout restart deployment/api-demo -n demo-api
         
