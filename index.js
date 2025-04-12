@@ -2,8 +2,26 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
+const counter = new client.Counter({
+    name: 'http_requests_total',
+    help: 'Número total de solicitudes HTTP a /ping'
+  });
+
+  const responseTime = new client.Histogram({
+    name: 'http_response_duration_seconds',
+    help: 'Duración de respuestas HTTP',
+    buckets: [0.1, 0.5, 1, 1.5]
+  });
+  
+  
 app.get('/ping', (req, res) => {
-  res.json({ message: 'pong deploy againg restart' });
+    counter.inc(); // incrementa en 1
+    const end = responseTime.startTimer();
+    // lógica de la respuesta...
+    res.json({ message: 'pong' });
+    end(); // marca el tiempo
+  
 });
 const client = require('prom-client');
 const collectDefaultMetrics = client.collectDefaultMetrics;
