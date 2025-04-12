@@ -41,7 +41,7 @@ jobs:
   build-and-push:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
-    needs: test  # 👈 Espera que el job "test" pase
+    needs: lint  # 👈 Espera que el job "test" pase
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
