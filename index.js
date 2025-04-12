@@ -33,6 +33,16 @@ app.get('/metrics', async (req, res) => {
     res.end(await client.register.metrics());
   });
 
+  const errorCounter = new client.Counter({
+    name: 'http_errors_total',
+    help: 'Total de errores 5xx'
+  });
+  
+  app.get('/error', (req, res) => {
+    errorCounter.inc();
+    res.status(500).send('Error simulado');
+  });
+  
 app.listen(port, () => {
   console.log(`API corriendo en http://localhost:${port}`);
 });
