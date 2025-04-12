@@ -43,4 +43,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: edeljose/api-k8s-demo:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/api-k8s-demo:latest
