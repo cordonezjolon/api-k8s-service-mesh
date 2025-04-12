@@ -44,3 +44,17 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/api-k8s-demo:latest
+  deploy:
+            runs-on: self-hosted
+            needs: build-and-push
+            steps:
+              - name: Checkout code
+                uses: actions/checkout@v3
+        
+              - name: Aplicar manifiestos en Minikube
+                run: |
+                  kubectl apply -f k8s/namespace.yaml
+                  kubectl apply -f k8s/rbac.yaml
+                  kubectl apply -f k8s/deployment.yaml
+                  kubectl apply -f k8s/service.yaml
+        

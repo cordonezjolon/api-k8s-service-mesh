@@ -16,6 +16,7 @@ spec:
       serviceAccountName: api-user
       containers:
         - name: api
+          imagePullPolicy: Always
           image: cordonezjolon/api-k8s-demo:latest
           ports:
             - containerPort: 3000
