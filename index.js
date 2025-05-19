@@ -23,8 +23,16 @@ const counter = new client.Counter({
 app.get('/ping', (req, res) => {
     counter.inc(); // incrementa en 1
     const end = responseTime.startTimer();
+
+        const headers = {
+        'x-request-id': req.headers['x-request-id'],
+        'x-b3-traceid': req.headers['x-b3-traceid'],
+        'x-b3-spanid': req.headers['x-b3-spanid'],
+        'x-b3-sampled': req.headers['x-b3-sampled'],
+    };
+
     // lógica de la respuesta...
-    res.json({ message: 'pong' });
+    res.json({ message: 'pong', headers });
     end(); // marca el tiempo
   
 });
