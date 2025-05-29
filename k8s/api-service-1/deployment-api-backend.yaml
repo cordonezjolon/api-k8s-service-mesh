@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  namespace: reto5
+  name: api-service-1-deployment
+  labels:
+    app: api-service-1
+    version: v2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: api-service-1
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: api-service-1
+        version: v2
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000"
+    spec:
+      containers:
+        - name: api-service-1
+          image: cordonezjolon/api-k8s-service1:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: reto5
+  name: api-service-1-deployment-v2
+  labels:
+    app: api-service-1
+    version: v2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: api-service-1
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: api-service-1
+        version: v2
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000"
+    spec:
+      containers:
+        - name: api-service-1
+          image: cordonezjolon/api-k8s-service1:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

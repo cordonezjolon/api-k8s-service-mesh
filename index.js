@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-
+app.use(express.json());
 
 const client = require('prom-client');
 const collectDefaultMetrics = client.collectDefaultMetrics;
@@ -50,6 +50,28 @@ app.get('/metrics', async (req, res) => {
     errorCounter.inc();
     res.status(500).send('Error simulado');
   });
+
+ app.post('/helloservice', async (req, res) => {
+    try {
+        const {name, puerto} = req.body.name;
+        
+        const response = await fetch(`http://${name}:${puerto}/sayhello`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+      console.log('Error al obtener datos de api-reto5-s2:', error);
+        res.status(500).send('Error al obtener datos de api-reto5-s2');
+    }
+  });
+
+app.get('/sayhello', (req, res) => {
+    res.json({ message: 'Hello from service' });
+  });
+
+
   
 app.listen(port, () => {
   console.log(`API corriendo en http://localhost:${port}`);

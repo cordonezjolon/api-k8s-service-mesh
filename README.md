@@ -1,4 +1,4 @@
-# api-k8s-demo
+# api-k8s-service1
 
 This project is a Node.js application that provides a simple API with monitoring capabilities using Prometheus metrics. It is designed to be deployed in a local Kubernetes cluster using a self-hosted GitHub Actions runner.
 

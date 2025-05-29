@@ -1,5 +1,5 @@
 {
-  "name": "api-k8s-demo",
+  "name": "api-k8s-service-mesh",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cordonezjolon/api-k8s-demo.git"
+    "url": "git+https://github.com/cordonezjolon/api-k8s-service-mesh.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/cordonezjolon/api-k8s-demo/issues"
+    "url": "https://github.com/cordonezjolon/api-k8s-service-mesh/issues"
   },
-  "homepage": "https://github.com/cordonezjolon/api-k8s-demo#readme",
+  "homepage": "https://github.com/cordonezjolon/api-k8s-service-mesh#readme",
   "dependencies": {
     "express": "^5.1.0",
     "prom-client": "^15.1.3"

@@ -1,4 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: demo-api
+  name: reto5
+  labels:
+    name: reto5
+    istio-injection: enabled

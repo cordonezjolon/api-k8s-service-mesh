@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: api-service-1
+  namespace: reto5
+spec:
+  hosts:
+    - api-service-1
+  http:
+    - route:
+        - destination:
+            host: api-service-1
+            subset: v1
+          weight: 100
