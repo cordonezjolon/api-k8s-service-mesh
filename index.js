@@ -52,7 +52,7 @@ app.get('/metrics', async (req, res) => {
   });
 
  app.post('/helloservice', async (req, res) => {
-   const {name, puerto} = req.body.name;
+   const {name, puerto} = req.body;
     try {
         
         const response = await fetch(`http://${name}:${puerto}/sayhello`);
