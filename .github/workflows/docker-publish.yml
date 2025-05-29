@@ -77,9 +77,17 @@ jobs:
                 run: |
                   kubectl apply -f k8s/namespace.yaml
                   kubectl apply -f k8s/rbac.yaml
-                  for file in k8s/*/*.yaml; do
-                    kubectl apply -f "$file"
-                  done
+                  kubectl apply -f k8s/api-service-1/deployment-api-backend.yaml
+                  kubectl apply -f k8s/api-service-1/destination-rule-api.yaml
+                  kubectl apply -f k8s/api-service-1/service-api-backend.yaml
+                  kubectl apply -f k8s/api-service-1/virtual-service.yaml
+                  kubectl apply -f k8s/api-service-2/deployment-api-backend.yaml
+                  kubectl apply -f k8s/api-service-2/destination-rule-api.yaml
+                  kubectl apply -f k8s/api-service-2/service-api-backend.yaml
+                  kubectl apply -f k8s/api-service-2/virtual-service.yaml
+                  kubectl apply -f k8s/api-service-3/deployment-api-backend.yaml
+                  kubectl apply -f k8s/api-service-3/destination-rule-api.yaml
+                  kubectl apply -f k8s/api-service-3/service-api-backend.yaml
+                  kubectl apply -f k8s/api-service-3/virtual-service.yaml
               - name: Force rollout restart
                 run: kubectl rollout restart deployment/api-demo -n demo-api
-        
