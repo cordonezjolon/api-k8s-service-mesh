@@ -52,8 +52,8 @@ app.get('/metrics', async (req, res) => {
   });
 
  app.post('/helloservice', async (req, res) => {
+   const {name, puerto} = req.body.name;
     try {
-        const {name, puerto} = req.body.name;
         
         const response = await fetch(`http://${name}:${puerto}/sayhello`);
         if (!response.ok) {
@@ -63,7 +63,7 @@ app.get('/metrics', async (req, res) => {
         res.json(data);
     } catch (error) {
       console.log('Error al obtener datos de api-reto5-s2:', error);
-        res.status(500).send('Error al obtener datos de api-reto5-s2');
+        res.status(500).send(`Error al obtener datos de http://${name}:${puerto}/sayhello -- ${error.message}`);
     }
   });
 
