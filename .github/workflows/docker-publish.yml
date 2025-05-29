@@ -90,4 +90,12 @@ jobs:
                   kubectl apply -f k8s/api-service-3/service-api-backend.yaml
                   kubectl apply -f k8s/api-service-3/virtual-service.yaml
               - name: Force rollout restart
-                run: kubectl rollout restart deployment/api-demo -n demo-api
+                run: |
+                  kubectl rollout restart deployment/api-service-1-deployment -n reto5
+                  kubectl rollout restart deployment/api-service-2-deployment -n reto5
+                  kubectl rollout restart deployment/api-service-3-deployment -n reto5
+                  kubectl rollout restart deployment/api-service-1-deployment-v2 -n reto5
+                  kubectl rollout restart deployment/api-service-2-deployment-v2 -n reto5
+                  kubectl rollout restart deployment/api-service-3-deployment-v2 -n reto5
+
+

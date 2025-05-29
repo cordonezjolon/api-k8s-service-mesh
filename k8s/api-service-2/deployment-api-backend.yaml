@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: api-service-2
-          image: cordonezjolon/api-k8s-service2:latest
+          image: cordonezjolon/api-k8s-service1:latest
           ports:
             - containerPort: 80
           resources:
@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
         - name: api-service-2
-          image: cordonezjolon/api-k8s-service2:latest
+          image: cordonezjolon/api-k8s-service1:latest
           ports:
             - containerPort: 80
           resources:
